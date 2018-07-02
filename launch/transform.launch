@@ -1,0 +1,27 @@
+<launch>
+    <node pkg="nodelet" type="nodelet" name="test_nodelet"  args="manager" output="screen"/>
+
+    <node pkg="nodelet" type="nodelet" name="pointcloud_transformer" args="load transform_pointcloud/transformPointcloud test_nodelet" output="screen">
+        <param name="to_frame" value="base_link"/>
+        <remap from="~input_pcl2" to="/camera/points"/>
+    </node>
+
+    <!--<node pkg="nodelet" type="nodelet" name="pointcloud_transformer2" args="load transform_pointcloud/transformPointcloudTafr standalone_nodelet2" output="screen">-->
+        <!--<param name="to_frame" value="laser"/>-->
+        <!--<remap from="~input_pcl" to="/pointcloud_transformer/output_pcl"/>-->
+    <!--</node>-->
+
+    <!--<node pkg="nodelet" type="nodelet" name="pointcloud_to_laser" args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet standalone_nodelet2" output="screen">-->
+        <!--<remap from="cloud_in" to="/transformed/pointcloud2"/>-->
+        <!--<remap from="scan" to="pcl/scan"/>-->
+        <!--<param name="min_height" value="-0.15"/>-->
+        <!--<param name="max_height" value="0.9"/>-->
+        <!--&lt;!&ndash;<param name="angle_min" value=""/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<param name="angle_max" value=""/>&ndash;&gt;-->
+        <!--<param name="angle_increment" value="0,005817759"/> &lt;!&ndash; 1/3 of degree &ndash;&gt;-->
+        <!--<param name="scan_time" value="0,033333333"/>-->
+        <!--<param name="range_min" value="0.1"/>-->
+        <!--<param name="range_max" value="4"/>-->
+        <!--<param name="concurency_level" value="1"/> &lt;!&ndash;n of used cpu cores&ndash;&gt;-->
+    <!--</node>-->
+</launch>
